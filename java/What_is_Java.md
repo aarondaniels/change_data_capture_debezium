@@ -26,50 +26,47 @@ The eight primitive data types in Java are delineated in the table below:
 
 ## Java Data Types
 
-| Byte | Whole numbers 
+Byte 
+Whole numbers |
 - E.g., 128 to 127
 - One byte of storage required |
-| Long | Large whole numbers
 
+Long 
+Large whole numbers
 E.g., 9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
 Eight bytes of storage required
- Float
 
- Decimal numbers
-
+Float
+Decimal numbers
 Stores six or seven decimal digits
 Four bytes of storage required
- Double
 
- Precise decimal numbers
-
+Double
+Precise decimal numbers
 Stores up to 15 decimal digits
 Eight bytes of storage required
- Boolean
 
- True or false
-
+Boolean
+True or false
 One bit of storage required
- Char (Character)
 
- Single characters
-
+Char (Character)
+Single characters
 Two bytes of storage required
 E.g., A, 4, or #
- Short
 
- Whole numbers
-
+Short
+Whole numbers
 E.g., 32,768 to 32,767
 Two bytes of storage required
 int, long, float, double, boolean, char
- Int (Integer)
 
- Whole numbers
-
+Int (Integer)
+Whole numbers
 E.g., 2,147,483,648 to 2,147,483,647
 Four bytes of storage required
-What Is Casting?
+
+# What Is Casting?
 
 Casting is a technique used in Java, and in Python as well, to change a variable’s data type. If a string needs to be converted into an integer, the string will need to be casted as an int, as shown below.
 
@@ -80,7 +77,7 @@ Note: It is possible to do the same conversion from an integer to a string by us
 
 String.valueOf([integer])
 
-Data Type Hierarchy
+# Data Type Hierarchy
 
 In Java, there is a specified hierarchy of data types when performing math operations. One common rule of Java is that the result of a math operation will always inherit the most precise data type used within the equation. For example, when taking the sum of a double and an integer, the result will always be a double. When dividing two integers, the answer will always result in an integer.
 
@@ -91,7 +88,8 @@ To see this Java characteristic in practice, try it out. Try dividing different 
 2 / 3 = 0
 0 / 3 = 0.66666667
 0/3.0 = 0.66666667
-Classes vs. Objects in Java
+
+# Classes vs. Objects in Java
 
 Java classes and objects go hand in hand and are often misused in conversation. To get a better understanding of the differences, think of a class as a recipe and an object as the completed dish.
 
@@ -99,7 +97,10 @@ Classes are what you, the programmer, write out and set characteristics to. Like
 
 Objects, on the other hand, resemble a finished dish. Objects are instances of a predefined class within a program. After writing a recipe, the chef will send out copies to all of their friends, who will then go and make their own instances of that recipe and use it to feed their families.
 
-How Can Classes and Objects Be Used in My Java Program?
+# Pagages in Java
+Packages help to group related classes and allow complexity to be minimized, resulting in reduction in code that needs to be files. Packages can be organized in different subdirectories to help better structure the code. 
+
+# How Can Classes and Objects Be Used in My Java Program?
 
 In most cases, a completed program is going to consist of hundreds, if not thousands, of lines of code. If this were all written in a single Java file, debugging and adding features would become nearly impossible. Java solves this problem by allowing the use of packages. Packages allow for programmers to reference certain parts of code even though it may be outside another code’s directory. This produces one of Java’s most desired features: modularity.
 
