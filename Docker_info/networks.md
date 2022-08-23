@@ -34,6 +34,8 @@ ADD customer.sql /docker-entrypoint-initdb.d
 
 EXPOSE 3306
 ```
+This code will add the sql file created in #2 to the docker file.
+
 4. Create a MySQL docker container and associate it to the myCDCNetwork with the following commandd: 
 ```
 docker run --rm --name mysqlserver -p 3306:3306 --network myCDCNetwork -d mysqltest
