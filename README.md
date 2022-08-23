@@ -25,8 +25,8 @@ Debezium is a library of connectors that capture changes from a variety of datab
 Currently, Debezium supports connectors for the following databases that you are already familiar with: MySQL, MongoDB, and Cassandra.
 
 ## The following steps will be taken to implement CDC by setting up a Debezium container for MySQL:
-### Create a MySQL database server within a container, initialize it, and make the container part of a network (see [this]() doc for instruction on container networks)
-1. Create Docker File, which references the sql file that creates the database. In this case, see [this file]()
+### Create a MySQL database server within a container, initialize it, and make the container part of a network (see [this](https://github.com/aarondaniels/change_data_capture_debezium/blob/main/Docker_info/networks.md) doc for instruction on container networks)
+1. Create Docker File, which references the sql file that creates the database. In this case, see [this file](https://github.com/aarondaniels/change_data_capture_debezium/blob/main/Database/Dockerfile)
 2. Create a docker netwowrk by entering the following in the CLI `docker network create myCDCNetwork`
 2. Create Docker Image by entering the following in the command line
 ```
@@ -42,7 +42,7 @@ Of mention, this command adds the container to the network of interest. In this 
 
 
 ### Run Debezium in a container
-1. Using the [DebeziumApp folder](), build a ***docker image*** by navigating to the DebeziumApp folder in command line an entering the following command, `docker build -t debeziumimg .`
+1. Using the [DebeziumApp folder](https://github.com/aarondaniels/change_data_capture_debezium/tree/main/DebeziumApp), build a ***docker image*** by navigating to the DebeziumApp folder in command line an entering the following command, `docker build -t debeziumimg .`
 2. From the command line, run the following command to create a ***Debezium container***
 ```
 docker run -it --rm --name debeziumserver --network myCDCNetwork debeziumimg bash
