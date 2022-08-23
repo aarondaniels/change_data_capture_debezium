@@ -24,7 +24,43 @@ Debezium is a library of connectors that capture changes from a variety of datab
 
 Currently, Debezium supports connectors for the following databases that you are already familiar with: MySQL, MongoDB, and Cassandra.
 
-## The following steps will be taken to implement CDC by setting up a Debezium connector for MySQL:
-1. Create a MySQL database server within a container
-2. Connect via the workbench and add database data
-3. write a python program that implements the Debezium package and does CDC. 
+## The following steps will be taken to implement CDC by setting up a Debezium container for MySQL:
+### Create a MySQL database server within a container, initialize it, and make the container part of a network (see [this]() doc for instruction on container networks)
+1. Create Docker File, which references the sql file that creates the database. In this case, see [this file]()
+2. Create a docker netwowrk by entering the following in the CLI `docker network create myCDCNetwork`
+2. Create Docker Image by entering the following in the command line
+```
+docker build -t mysqlmasterimg .
+```
+Confirm image was created by entering `docker images` in the command line and finding the new image. 
+3. Create a Docker container
+```
+docker run --rm --name mysqlserver -p 33061:3306 --network myCDCNetwork -d mysqlmasterimg
+```
+Of mention, this command adds the container to the network of interest. In this case, 'mysqlable'
+
+
+
+### Run Debezium in a container
+1. Using the [DebeziumApp folder](), build a ***docker image*** by navigating to the DebeziumApp folder in command line an entering the following command, `docker build -t debeziumimg .`
+2. From the command line, run the following command to create a ***Debezium container***
+```
+docker run -it --rm --name debeziumserver --network myCDCNetwork debeziumimg bash
+```
+Ensure the container is part of the same network as the MySQL server container
+3. Within the Debezium server container, navigate to /tmp/src/main/java/mit/edu/tv/config/DebesiumConnectorConfig.java and ensure the config file has the appropriate database noted. In this case, employeedb. 
+3. From the command prompt, run the following command to start the Spring Boot application that uses Debezium to monitor the MySQL database: 
+```
+mvn spring-boot:run
+```
+
+### Bring it all together
+
+1. Connect via the workbench and add database data. Open MySQL workbench and connect to the customerdb file that is running inside the docker container created above. Run the INSERT query to insert a new row in the customer table: 
+``` sql
+
+INSERT INTO employeedb.employee VALUES (2, "Mary", "Doe", "4351234354", "mary@doe.com");
+```
+At this point, the Debezium console application should indicate that a new row was created in the customer table from Workbench.
+
+
